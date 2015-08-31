@@ -1,0 +1,45 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.dialect">
+			org.hibernate.dialect.MySQLDialect
+		</property>
+		<property name="hibernate.connection.driver_class">
+			com.mysql.jdbc.Driver
+		</property>
+
+		<!-- Assume test is the database name -->
+		<property name="hibernate.connection.url">
+			jdbc:mysql://localhost/sakila
+		</property>
+		<property name="hibernate.connection.username">
+			root
+		</property>
+		<property name="hibernate.connection.password">
+			
+		</property>
+		
+		<!-- Hibernate声明JDBC事务 -->
+		<property name="hibernate.transaction.factory_class">
+			org.hibernate.transaction.JDBCTransactionFactory
+		</property>
+		
+		<!--  Hibernate声明JTA事务 
+		<property name="hibernate.transaction.factory_class">
+			org.hibernate.transaction.JTATransactionFactory
+		</property> -->
+		
+		<!-- 设置事务的隔离级别 -->
+		<property name="hibernate.connection.isolation">2</property>
+
+		<!-- List of XML mapping files -->
+		<mapping resource="com/hand/Customer.hbm.xml" />
+		<mapping resource="com/hand/Address.hbm.xml" />
+		<mapping resource="com/hand/City.hbm.xml" />
+		<mapping resource="com/hand/Country.hbm.xml" />
+		<mapping resource="com/hand/Store.hbm.xml" />
+	</session-factory>
+</hibernate-configuration>

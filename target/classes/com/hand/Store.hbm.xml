@@ -1,0 +1,14 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.hand.Store" table="store">
+		<id name="id" type="int" column="store_id">
+			<generator class="native"></generator>
+		</id>
+		<property name="manager_staff_id" column="manager_staff_id" type="int"></property>
+		<property name="address_id" column="address_id" type="int"></property>
+		<property name="last_update" column="last_update" type="date"></property>
+		
+	</class>
+</hibernate-mapping>

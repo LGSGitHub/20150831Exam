@@ -1,0 +1,18 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.hand.Address" table="address">
+		<id name="id" type="int" column="address_id">
+			<generator class="native"></generator>
+		</id>
+		<property name="address" column="address" type="string"></property>
+		<property name="address2" column="address2" type="string"></property>
+		<property name="district" column="district" type="string"></property>
+		<property name="city_id" column="city_id" type="int"></property>
+		<property name="postal_code" column="postal_code" type="string"></property>
+		<property name="phone" column="phone" type="string"></property>
+		<property name="last_update" column="last_update" type="date"></property>
+		
+	</class>
+</hibernate-mapping>
