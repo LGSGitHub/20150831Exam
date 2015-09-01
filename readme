@@ -1,0 +1,4 @@
+运行步骤：
+1、执行mvn clean
+2、执行mvn compile
+3、执行mvn exec:java -Dexec.mainClass="com.hand.Main"

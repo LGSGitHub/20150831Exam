@@ -72,7 +72,7 @@ public class CustomerManage {
 
 			// 一下是用原声的SQL查询
 			String sql = "SELECT first_name, last_name, email,create_date, address FROM customer,address where customer.first_name="
-			+ firsr_name + "and customer.last_name=" + last_name +"and customer.email=" + email + "and address.address_id=" +address_id;
+			+ firsr_name + " and customer.last_name=" + last_name +" and customer.email=" + email + " and customer.address_id=" +address_id;
 			SQLQuery query = session.createSQLQuery(sql);
 			query.setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
 			List data = query.list();

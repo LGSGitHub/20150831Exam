@@ -2,54 +2,24 @@ package com.hand;
 
 import java.util.Scanner;
 
-import org.hibernate.SessionFactory;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.service.ServiceRegistry;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Main {
-	
-	
 
-	@Autowired
-	//private static JDBCService jdbcService;
 	private static CustomerManage customerManage;
-	public static CustomerManage getCustomerManage() {
+	/*public static CustomerManage getCustomerManage() {
 		return customerManage;
 	}
 
 	public static void setCustomerManage(CustomerManage customerManage) {
 		Main.customerManage = customerManage;
-	}
-/*	public static void setJdbcService(CustomerManage customerManage)
-	{
-		Main.customerManage = customerManage;
-	}*/
-	
-	/*private static SessionFactory factory;
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		factory = sessionFactory;
 	}*/
 
 	public static void main(String[] args) {
-		/*try
-		{
-			Configuration cfg = new Configuration().configure();
-			// 下面的方法过期
-			// factory = new Configuration().configure().buildSessionFactory();
-			StandardServiceRegistryBuilder ssrb = new StandardServiceRegistryBuilder()
-					.applySettings(cfg.getProperties());
-			ServiceRegistry servise = ssrb.build();
-			factory = cfg.buildSessionFactory(servise);
-		} catch (Throwable ex) {
-			System.err.println("Failed to create sessionFactory object." + ex);
-			throw new ExceptionInInitializerError(ex);
-		}*/
 		
 		ApplicationContext context = new ClassPathXmlApplicationContext("ApplicationContext.xml");
+		customerManage = (CustomerManage) context.getBean("customerManage");
 		
 		Scanner sc = new Scanner(System.in);
 		System.out.println("请输入FirstName：");
