@@ -1,36 +1,73 @@
 package com.hand;
 
-import java.sql.Date;
+import java.sql.Timestamp;
+import java.util.HashSet;
+import java.util.Set;
 
-public class Country {
+/**
+ * Country entity. @author MyEclipse Persistence Tools
+ */
 
-	private int country_id;
+public class Country implements java.io.Serializable {
+
+	// Fields
+
+	private Short countryId;
 	private String country;
-	private Date last_update;
-	
+	private Timestamp lastUpdate;
+	private Set cities = new HashSet(0);
 
-	public Date getLast_update() {
-		return last_update;
+	// Constructors
+
+	/** default constructor */
+	public Country() {
 	}
 
-	public void setLast_update(Date last_update) {
-		this.last_update = last_update;
+	/** minimal constructor */
+	public Country(String country, Timestamp lastUpdate) {
+		this.country = country;
+		this.lastUpdate = lastUpdate;
 	}
 
-	public int getCountry_id() {
-		return country_id;
+	/** full constructor */
+	public Country(String country, Timestamp lastUpdate, Set cities) {
+		this.country = country;
+		this.lastUpdate = lastUpdate;
+		this.cities = cities;
 	}
 
-	public void setCountry_id(int country_id) {
-		this.country_id = country_id;
+	// Property accessors
+
+	public Short getCountryId() {
+		return this.countryId;
+	}
+
+	public void setCountryId(Short countryId) {
+		this.countryId = countryId;
 	}
 
 	public String getCountry() {
-		return country;
+		return this.country;
 	}
 
 	public void setCountry(String country) {
 		this.country = country;
+	}
+
+	public Timestamp getLastUpdate() {
+		return this.lastUpdate;
+	}
+
+	public void setLastUpdate(Timestamp lastUpdate) {
+		this.lastUpdate = lastUpdate;
+	}
+
+	public Set getCities() {
+		return this.cities;
+	}
+
+	public void setCities(Set cities) {
+		this.cities = cities;
 	}
 
 }

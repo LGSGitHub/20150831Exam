@@ -1,36 +1,81 @@
 package com.hand;
 
-import java.sql.Date;
+import java.sql.Timestamp;
+import java.util.HashSet;
+import java.util.Set;
 
-public class Address {
+/**
+ * Address entity. @author MyEclipse Persistence Tools
+ */
 
-	private int address_id;
+public class Address implements java.io.Serializable {
+
+	// Fields
+
+	private Short addressId;
+	private City city;
 	private String address;
 	private String address2;
 	private String district;
-	private int city_id;
-	private String postal_code;
+	private String postalCode;
 	private String phone;
-	private Date last_update;
+	private Timestamp lastUpdate;
+	private Set stores = new HashSet(0);
+	private Set staffs = new HashSet(0);
+	private Set customers = new HashSet(0);
 
-	public int getAddress_id() {
-		return address_id;
+	// Constructors
+
+	/** default constructor */
+	public Address() {
 	}
 
-	public void setAddress_id(int address_id) {
-		this.address_id = address_id;
+	/** minimal constructor */
+	public Address(City city, String address, String district, String phone,
+			Timestamp lastUpdate) {
+		this.city = city;
+		this.address = address;
+		this.district = district;
+		this.phone = phone;
+		this.lastUpdate = lastUpdate;
 	}
 
-	public Date getLast_update() {
-		return last_update;
+	/** full constructor */
+	public Address(City city, String address, String address2, String district,
+			String postalCode, String phone, Timestamp lastUpdate, Set stores,
+			Set staffs, Set customers) {
+		this.city = city;
+		this.address = address;
+		this.address2 = address2;
+		this.district = district;
+		this.postalCode = postalCode;
+		this.phone = phone;
+		this.lastUpdate = lastUpdate;
+		this.stores = stores;
+		this.staffs = staffs;
+		this.customers = customers;
 	}
 
-	public void setLast_update(Date last_update) {
-		this.last_update = last_update;
+	// Property accessors
+
+	public Short getAddressId() {
+		return this.addressId;
+	}
+
+	public void setAddressId(Short addressId) {
+		this.addressId = addressId;
+	}
+
+	public City getCity() {
+		return this.city;
+	}
+
+	public void setCity(City city) {
+		this.city = city;
 	}
 
 	public String getAddress() {
-		return address;
+		return this.address;
 	}
 
 	public void setAddress(String address) {
@@ -38,7 +83,7 @@ public class Address {
 	}
 
 	public String getAddress2() {
-		return address2;
+		return this.address2;
 	}
 
 	public void setAddress2(String address2) {
@@ -46,35 +91,66 @@ public class Address {
 	}
 
 	public String getDistrict() {
-		return district;
+		return this.district;
 	}
 
 	public void setDistrict(String district) {
 		this.district = district;
 	}
 
-	public int getCity_id() {
-		return city_id;
+	public String getPostalCode() {
+		return this.postalCode;
 	}
 
-	public void setCity_id(int city_id) {
-		this.city_id = city_id;
-	}
-
-	public String getPostal_code() {
-		return postal_code;
-	}
-
-	public void setPostal_code(String postal_code) {
-		this.postal_code = postal_code;
+	public void setPostalCode(String postalCode) {
+		this.postalCode = postalCode;
 	}
 
 	public String getPhone() {
-		return phone;
+		return this.phone;
 	}
 
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+
+	public Timestamp getLastUpdate() {
+		return this.lastUpdate;
+	}
+
+	public void setLastUpdate(Timestamp lastUpdate) {
+		this.lastUpdate = lastUpdate;
+	}
+
+	public Set getStores() {
+		return this.stores;
+	}
+
+	public void setStores(Set stores) {
+		this.stores = stores;
+	}
+
+	public Set getStaffs() {
+		return this.staffs;
+	}
+
+	public void setStaffs(Set staffs) {
+		this.staffs = staffs;
+	}
+
+	public Set getCustomers() {
+		return this.customers;
+	}
+
+	public void setCustomers(Set customers) {
+		this.customers = customers;
+	}
+
+	@Override
+	public String toString() {
+		return "Address [addressId=" + addressId + ", city=" + city + ", address=" + address + ", address2=" + address2
+				+ ", district=" + district + ", postalCode=" + postalCode + ", phone=" + phone + ", lastUpdate="
+				+ lastUpdate + ", stores=" + stores + ", staffs=" + staffs + ", customers=" + customers + "]";
 	}
 
 }

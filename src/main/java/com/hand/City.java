@@ -1,44 +1,85 @@
 package com.hand;
 
-import java.sql.Date;
+import java.sql.Timestamp;
+import java.util.HashSet;
+import java.util.Set;
 
-public class City {
+/**
+ * City entity. @author MyEclipse Persistence Tools
+ */
 
-	private int city_id;
+public class City implements java.io.Serializable {
+
+	// Fields
+
+	private Short cityId;
+	private Country country;
 	private String city;
-	private int country_id;
-	private Date last_update;
+	private Timestamp lastUpdate;
+	private Set addresses = new HashSet(0);
 
-	public Date getLast_update() {
-		return last_update;
+	// Constructors
+
+	/** default constructor */
+	public City() {
 	}
 
-	public void setLast_update(Date last_update) {
-		this.last_update = last_update;
+	/** minimal constructor */
+	public City(Country country, String city, Timestamp lastUpdate) {
+		this.country = country;
+		this.city = city;
+		this.lastUpdate = lastUpdate;
 	}
 
-	public int getCity_id() {
-		return city_id;
+	/** full constructor */
+	public City(Country country, String city, Timestamp lastUpdate,
+			Set addresses) {
+		this.country = country;
+		this.city = city;
+		this.lastUpdate = lastUpdate;
+		this.addresses = addresses;
 	}
 
-	public void setCity_id(int city_id) {
-		this.city_id = city_id;
+	// Property accessors
+
+	public Short getCityId() {
+		return this.cityId;
+	}
+
+	public void setCityId(Short cityId) {
+		this.cityId = cityId;
+	}
+
+	public Country getCountry() {
+		return this.country;
+	}
+
+	public void setCountry(Country country) {
+		this.country = country;
 	}
 
 	public String getCity() {
-		return city;
+		return this.city;
 	}
 
 	public void setCity(String city) {
 		this.city = city;
 	}
 
-	public int getCountry_id() {
-		return country_id;
+	public Timestamp getLastUpdate() {
+		return this.lastUpdate;
 	}
 
-	public void setCountry_id(int country_id) {
-		this.country_id = country_id;
+	public void setLastUpdate(Timestamp lastUpdate) {
+		this.lastUpdate = lastUpdate;
+	}
+
+	public Set getAddresses() {
+		return this.addresses;
+	}
+
+	public void setAddresses(Set addresses) {
+		this.addresses = addresses;
 	}
 
 }

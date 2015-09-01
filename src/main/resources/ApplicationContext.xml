@@ -55,9 +55,9 @@
 			</props>
 		</property>
 		<!-- 自动扫描注解方式配置的hibernate类文件 -->
-		<property name="packagesToScan">
+		<property name="mappingLocations">
 			<list>
-				<value>classpath:hbm_xml/*.hbm.xml</value>
+				<value>/*.hbm.xml</value>
 			</list>
 		</property>
 

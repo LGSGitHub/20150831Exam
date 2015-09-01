@@ -1,44 +1,105 @@
 package com.hand;
 
-import java.sql.Date;
+import java.sql.Timestamp;
+import java.util.HashSet;
+import java.util.Set;
 
-public class Store {
+/**
+ * Store entity. @author MyEclipse Persistence Tools
+ */
 
-	private int store_id;
-	private int manager_staff_id;
-	private int address_id;
-	private Date last_update;
+public class Store implements java.io.Serializable {
 
-	public Date getLast_update() {
-		return last_update;
+	// Fields
+
+	private Short storeId;
+	private Staff staff;
+	private Address address;
+	private Timestamp lastUpdate;
+	private Set inventories = new HashSet(0);
+	private Set customers = new HashSet(0);
+	private Set staffs = new HashSet(0);
+
+	// Constructors
+
+	/** default constructor */
+	public Store() {
 	}
 
-	public void setLast_update(Date last_update) {
-		this.last_update = last_update;
+	/** minimal constructor */
+	public Store(Staff staff, Address address, Timestamp lastUpdate) {
+		this.staff = staff;
+		this.address = address;
+		this.lastUpdate = lastUpdate;
 	}
 
-	public int getStore_id() {
-		return store_id;
+	/** full constructor */
+	public Store(Staff staff, Address address, Timestamp lastUpdate,
+			Set inventories, Set customers, Set staffs) {
+		this.staff = staff;
+		this.address = address;
+		this.lastUpdate = lastUpdate;
+		this.inventories = inventories;
+		this.customers = customers;
+		this.staffs = staffs;
 	}
 
-	public void setStore_id(int store_id) {
-		this.store_id = store_id;
+	// Property accessors
+
+	public Short getStoreId() {
+		return this.storeId;
 	}
 
-	public int getManager_staff_id() {
-		return manager_staff_id;
+	public void setStoreId(Short storeId) {
+		this.storeId = storeId;
 	}
 
-	public void setManager_staff_id(int manager_staff_id) {
-		this.manager_staff_id = manager_staff_id;
+	public Staff getStaff() {
+		return this.staff;
 	}
 
-	public int getAddress_id() {
-		return address_id;
+	public void setStaff(Staff staff) {
+		this.staff = staff;
 	}
 
-	public void setAddress_id(int address_id) {
-		this.address_id = address_id;
+	public Address getAddress() {
+		return this.address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+	public Timestamp getLastUpdate() {
+		return this.lastUpdate;
+	}
+
+	public void setLastUpdate(Timestamp lastUpdate) {
+		this.lastUpdate = lastUpdate;
+	}
+
+	public Set getInventories() {
+		return this.inventories;
+	}
+
+	public void setInventories(Set inventories) {
+		this.inventories = inventories;
+	}
+
+	public Set getCustomers() {
+		return this.customers;
+	}
+
+	public void setCustomers(Set customers) {
+		this.customers = customers;
+	}
+
+	public Set getStaffs() {
+		return this.staffs;
+	}
+
+	public void setStaffs(Set staffs) {
+		this.staffs = staffs;
 	}
 
 }

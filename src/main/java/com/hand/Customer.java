@@ -1,80 +1,159 @@
 package com.hand;
+import java.sql.Timestamp;
+import java.util.HashSet;
+import java.util.Set;
 
-import java.util.Date;
+/**
+ * Customer entity. @author MyEclipse Persistence Tools
+ */
 
-public class Customer {
+public class Customer implements java.io.Serializable {
 
-	private int store_id;
-	private int customer_id;
-	private String first_name;
-	private String last_name;
+	// Fields
+
+	private Short customerId;
+	private Address address;
+	private Store store;
+	private String firstName;
+	private String lastName;
 	private String email;
-	private int address_id;
-	private int active;
-	private Date create_date;
+	private Boolean active;
+	private Timestamp createDate;
+	private Timestamp lastUpdate;
+	private Set rentals = new HashSet(0);
+	private Set payments = new HashSet(0);
 
-	public int getCustomer_id() {
-		return customer_id;
+	// Constructors
+
+	/** default constructor */
+	public Customer() {
 	}
 
-	public void setCustomer_id(int customer_id) {
-		this.customer_id = customer_id;
-	}
-
-	public int getStore_id() {
-		return store_id;
-	}
-
-	public void setStore_id(int store_id) {
-		this.store_id = store_id;
-	}
-
-	public int getActive() {
-		return active;
-	}
-
-	public void setActive(int active) {
+	/** minimal constructor */
+	public Customer(Address address, Store store, String firstName,
+			String lastName, Boolean active, Timestamp createDate,
+			Timestamp lastUpdate) {
+		this.address = address;
+		this.store = store;
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.active = active;
+		this.createDate = createDate;
+		this.lastUpdate = lastUpdate;
 	}
 
-	public Date getCreate_date() {
-		return create_date;
+	/** full constructor */
+	public Customer(Address address, Store store, String firstName,
+			String lastName, String email, Boolean active,
+			Timestamp createDate, Timestamp lastUpdate, Set rentals,
+			Set payments) {
+		this.address = address;
+		this.store = store;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.active = active;
+		this.createDate = createDate;
+		this.lastUpdate = lastUpdate;
+		this.rentals = rentals;
+		this.payments = payments;
 	}
 
-	public void setCreate_date(Date create_date) {
-		this.create_date = create_date;
+	// Property accessors
+
+	public Short getCustomerId() {
+		return this.customerId;
 	}
 
-	public String getFirst_name() {
-		return first_name;
+	public void setCustomerId(Short customerId) {
+		this.customerId = customerId;
 	}
 
-	public void setFirst_name(String first_name) {
-		this.first_name = first_name;
+	public Address getAddress() {
+		return this.address;
 	}
 
-	public String getLast_name() {
-		return last_name;
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 
-	public void setLast_name(String last_name) {
-		this.last_name = last_name;
+	public Store getStore() {
+		return this.store;
+	}
+
+	public void setStore(Store store) {
+		this.store = store;
+	}
+
+	public String getFirstName() {
+		return this.firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return this.lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	public String getEmail() {
-		return email;
+		return this.email;
 	}
 
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
-	public int getAddress_id() {
-		return address_id;
+	public Boolean getActive() {
+		return this.active;
 	}
 
-	public void setAddress_id(int address_id) {
-		this.address_id = address_id;
+	public void setActive(Boolean active) {
+		this.active = active;
+	}
+
+	public Timestamp getCreateDate() {
+		return this.createDate;
+	}
+
+	public void setCreateDate(Timestamp createDate) {
+		this.createDate = createDate;
+	}
+
+	public Timestamp getLastUpdate() {
+		return this.lastUpdate;
+	}
+
+	public void setLastUpdate(Timestamp lastUpdate) {
+		this.lastUpdate = lastUpdate;
+	}
+
+	public Set getRentals() {
+		return this.rentals;
+	}
+
+	public void setRentals(Set rentals) {
+		this.rentals = rentals;
+	}
+
+	public Set getPayments() {
+		return this.payments;
+	}
+
+	public void setPayments(Set payments) {
+		this.payments = payments;
+	}
+
+	@Override
+	public String toString() {
+		return "Customer [customerId=" + customerId + ", address=" + address + ", store=" + store + ", firstName="
+				+ firstName + ", lastName=" + lastName + ", email=" + email + ", active=" + active + ", createDate="
+				+ createDate + ", lastUpdate=" + lastUpdate + ", rentals=" + rentals + ", payments=" + payments + "]";
 	}
 
 }
