@@ -2,6 +2,7 @@ package com.hand;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -11,6 +12,7 @@ import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 public class CustomerManage {
 	
@@ -57,22 +59,26 @@ public class CustomerManage {
 		
 		try {
 			tx = session.beginTransaction();
-			/*// 以下使用标准查询
-			Criteria cr = session.createCriteria(Employee.class);
+			// 以下使用标准查询
+			Criteria cr = session.createCriteria(Customer.class);
 			// Add restriction.
-			cr.add(Restrictions.gt("salary", 2000));
-			List employees = cr.list();
+			cr.add(Restrictions.gt("first_name", firsr_name));
+			List customers = cr.list();
 
-			for (Iterator iterator = employees.iterator(); iterator.hasNext();) {
-				Employee employee = (Employee) iterator.next();
-				System.out.print("First Name: " + employee.getFirstName());
-				System.out.print("  Last Name: " + employee.getLastName());
-				System.out.println("  Salary: " + employee.getSalary());
-			}*/
+			for (Iterator iterator = customers.iterator(); iterator.hasNext();) {
+				Customer customer = (Customer) iterator.next();
+				System.out.print("First Name: " + customer.getFirst_name());
+				System.out.print("  Last Name: " + customer.getLast_name());
+				System.out.print("  Email: " + customer.getEmail());
+				System.out.print("  Address: " + customer.getAddress_id());
+				System.out.println(" Create_date" + customer.getCreate_date());
+			}
 
 			// 一下是用原声的SQL查询
-			String sql = "SELECT first_name, last_name, email,create_date, address FROM customer,address where customer.first_name="
-			+ firsr_name + " and customer.last_name=" + last_name +" and customer.email=" + email + " and customer.address_id=" +address_id;
+			/*String sql = "SELECT first_name, last_name, email,create_date, address FROM customer,address where customer.first_name="
+			+ firsr_name + " and customer.last_name=" + last_name +" and customer.email=" + email;
+			// + " and customer.address_id=" +address_id
+			//String sql = "select first_name,last_name from customer where first_name="+firsr_name;
 			SQLQuery query = session.createSQLQuery(sql);
 			query.setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
 			List data = query.list();
@@ -83,7 +89,7 @@ public class CustomerManage {
 				System.out.print("Email: " + row.get("email"));
 				System.out.print("Address: " + row.get("address"));
 				System.out.print("Create_date: " + row.get("create_date"));
-			}
+			}*/
 
 			tx.commit();
 		} catch (HibernateException e) {
